@@ -1,0 +1,17 @@
+# Build output and IDE files
+.gradle/
+build/
+.idea/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Machine-specific
+local.properties
+
+# Signing secrets: never commit these
+*.jks
+*.keystore
+passes.odt

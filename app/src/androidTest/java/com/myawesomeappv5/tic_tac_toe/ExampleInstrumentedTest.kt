@@ -1,4 +1,4 @@
-package com.example.tic_tac_toe
+package com.myawesomeappv5.tic_tac_toe
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.tic_tac_toe", appContext.packageName)
+        assertEquals("com.myawesomeappv5.tic_tac_toe", appContext.packageName)
     }
 }

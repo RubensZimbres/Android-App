@@ -1,136 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="40dp"
-    android:background="@drawable/back_win">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_win"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button_00"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_01"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_02"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-    </LinearLayout>
-
+    <!-- Dim the artwork so the board is the focus -->
     <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/white" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/scrim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:id="@+id/scoreboard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/card_background"
+        android:elevation="6dp"
+        android:orientation="horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="420dp">
 
-        <Button
-            android:id="@+id/button_10"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
+            <TextView
+                style="@style/ScoreLabel"
+                android:text="@string/score_you"
+                android:textColor="@color/mark_x" />
 
-        <Button
-            android:id="@+id/button_11"
+            <TextView
+                android:id="@+id/scoreWins"
+                style="@style/ScoreValue"
+                tools:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
+            <TextView
+                style="@style/ScoreLabel"
+                android:text="@string/score_ties"
+                android:textColor="@color/text_secondary" />
 
-        <Button
-            android:id="@+id/button_12"
+            <TextView
+                android:id="@+id/scoreTies"
+                style="@style/ScoreValue"
+                tools:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <TextView
+                style="@style/ScoreLabel"
+                android:text="@string/score_cpu"
+                android:textColor="@color/mark_o" />
+
+            <TextView
+                android:id="@+id/scoreLosses"
+                style="@style/ScoreValue"
+                tools:text="0" />
+        </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/white" />
+    <TextView
+        android:id="@+id/turnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:accessibilityLiveRegion="polite"
+        android:fontFamily="sans-serif-medium"
+        android:shadowColor="@color/mark_shadow"
+        android:shadowDy="2"
+        android:shadowRadius="6"
+        android:text="@string/turn_player"
+        android:textColor="@color/mark_x"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreboard" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/board"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_margin="24dp"
+        android:background="@drawable/card_background"
+        android:elevation="12dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/turnText"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintWidth_max="480dp">
 
-        <Button
-            android:id="@+id/button_20"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gridV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3333" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gridV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6667" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gridH1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3333" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gridH2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6667" />
 
         <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_21"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/grid_line_vertical"
+            app:layout_constraintStart_toStartOf="@id/gridV1"
+            app:layout_constraintEnd_toEndOf="@id/gridV1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
         <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_22"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/grid_line_vertical"
+            app:layout_constraintStart_toStartOf="@id/gridV2"
+            app:layout_constraintEnd_toEndOf="@id/gridV2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <View
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:layout_height="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/grid_line_horizontal"
+            app:layout_constraintTop_toTopOf="@id/gridH1"
+            app:layout_constraintBottom_toBottomOf="@id/gridH1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/grid_line_horizontal"
+            app:layout_constraintTop_toTopOf="@id/gridH2"
+            app:layout_constraintBottom_toBottomOf="@id/gridH2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </LinearLayout>
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_00"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gridV1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/gridH1" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_01"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV1"
+            app:layout_constraintEnd_toEndOf="@id/gridV2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/gridH1" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_02"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/gridH1" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gridV1"
+            app:layout_constraintTop_toTopOf="@id/gridH1"
+            app:layout_constraintBottom_toBottomOf="@id/gridH2" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV1"
+            app:layout_constraintEnd_toEndOf="@id/gridV2"
+            app:layout_constraintTop_toTopOf="@id/gridH1"
+            app:layout_constraintBottom_toBottomOf="@id/gridH2" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gridH1"
+            app:layout_constraintBottom_toBottomOf="@id/gridH2" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_20"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gridV1"
+            app:layout_constraintTop_toTopOf="@id/gridH2"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV1"
+            app:layout_constraintEnd_toEndOf="@id/gridV2"
+            app:layout_constraintTop_toTopOf="@id/gridH2"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <com.myawesomeappv5.tic_tac_toe.CellView
+            android:id="@+id/cell_22"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintStart_toStartOf="@id/gridV2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gridH2"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

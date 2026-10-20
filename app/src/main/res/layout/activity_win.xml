@@ -1,48 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back_win">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_win"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/scrim_strong"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/resultCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-
-        android:gravity="center"
+        android:layout_margin="32dp"
+        android:background="@drawable/card_background"
+        android:elevation="16dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="16dp"
-        tools:visibility="visible"> <!-- semi-transparent white background -->
+        android:padding="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="380dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.myawesomeappv5.tic_tac_toe.CellView
+                android:id="@+id/resultMark1"
+                android:layout_width="96dp"
+                android:layout_height="96dp" />
+
+            <com.myawesomeappv5.tic_tac_toe.CellView
+                android:id="@+id/resultMark2"
+                android:layout_width="96dp"
+                android:layout_height="96dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/winnerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="462dp"
-            android:textColor="#FFA500"
-            android:textSize="32sp"
-            android:textStyle="bold" /> <!-- black text color for visibility -->
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:shadowColor="@color/mark_shadow"
+            android:shadowDy="3"
+            android:shadowRadius="8"
+            android:textColor="@color/fire_amber"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/scoreSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/playAgainButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#008000"
-            android:text="Play Again"
-            android:textSize="22dp"/>
+            style="@style/PillButton.Primary"
+            android:layout_width="match_parent"
+            android:layout_marginTop="28dp"
+            android:text="@string/play_again" />
 
         <Button
             android:id="@+id/exitButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#FF0000"
-            android:text="Exit"
-            android:textSize="22dp"/>
+            style="@style/PillButton.Outline"
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:stateListAnimator="@null"
+            android:text="@string/exit" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
