@@ -2,13 +2,11 @@
     <string name="app_name">Tic-tac-toe</string>
     <string name="developer_credit">Developed by raz</string>
 
-    <!-- Home -->
     <string name="title">TIC TAC TOE</string>
     <string name="subtitle">Can you beat the computer?</string>
     <string name="play">PLAY</string>
     <string name="rate_app">Rate the app</string>
 
-    <!-- Game -->
     <string name="score_you">YOU</string>
     <string name="score_ties">TIES</string>
     <string name="score_cpu">CPU</string>
@@ -18,7 +16,6 @@
     <string name="cell_x">X</string>
     <string name="cell_o">O</string>
 
-    <!-- Result -->
     <string name="result_you_win">You win!</string>
     <string name="result_computer_wins">Computer wins!</string>
     <string name="result_tie">It\'s a tie!</string>

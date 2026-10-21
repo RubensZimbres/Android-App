@@ -23,7 +23,7 @@ class WelcomeActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private var currentVolume = 0f
     private val maxVolume = 1.0f
-    private val fadeDuration = 2000L // 2 seconds
+    private val fadeDuration = 2000L
     private var playPulse: ObjectAnimator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,6 @@ class WelcomeActivity : AppCompatActivity() {
             start()
         }
 
-        // Background music, looping and fading in. create() returns null if the audio can't be played.
         mediaPlayer = MediaPlayer.create(this, R.raw.game)?.apply {
             isLooping = true
             setVolume(0f, 0f)
@@ -64,7 +63,6 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
-    /** Paints the title text with a vertical amber-to-red gradient, like the flames in the background. */
     private fun applyFireGradient(title: TextView) {
         title.paint.shader = LinearGradient(
             0f, 0f, 0f, title.textSize,
@@ -96,7 +94,7 @@ class WelcomeActivity : AppCompatActivity() {
     private fun startFadeIn() {
         val player = mediaPlayer ?: return
         currentVolume = 0f
-        val volumeIncrement = maxVolume / (fadeDuration / 50) // Increase every 50ms
+        val volumeIncrement = maxVolume / (fadeDuration / 50)
 
         val updateVolume = object : Runnable {
             override fun run() {
@@ -104,7 +102,7 @@ class WelcomeActivity : AppCompatActivity() {
                     currentVolume += volumeIncrement
                     if (currentVolume > maxVolume) currentVolume = maxVolume
                     player.setVolume(currentVolume, currentVolume)
-                    handler.postDelayed(this, 50) // Run again after 50ms
+                    handler.postDelayed(this, 50)
                 }
             }
         }
@@ -114,7 +112,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        handler.removeCallbacksAndMessages(null) // Remove any pending posts of Runnable
+        handler.removeCallbacksAndMessages(null)
         playPulse?.cancel()
         mediaPlayer?.release()
         mediaPlayer = null
@@ -123,14 +121,14 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mediaPlayer?.takeIf { it.isPlaying }?.pause()
-        handler.removeCallbacksAndMessages(null) // Stop the fade-in effect
+        handler.removeCallbacksAndMessages(null)
     }
 
     override fun onResume() {
         super.onResume()
         mediaPlayer?.takeIf { !it.isPlaying }?.let {
             it.start()
-            startFadeIn() // Restart the fade-in effect
+            startFadeIn()
         }
     }
 }

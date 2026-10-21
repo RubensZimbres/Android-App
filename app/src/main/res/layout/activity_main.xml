@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Dim the artwork so the board is the focus -->
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"

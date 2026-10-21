@@ -1,4 +1,3 @@
-# Build output and IDE files
 .gradle/
 build/
 .idea/
@@ -8,10 +7,8 @@ captures/
 .externalNativeBuild/
 .cxx/
 
-# Machine-specific
 local.properties
 
-# Signing secrets: never commit these
 *.jks
 *.keystore
 passes.odt

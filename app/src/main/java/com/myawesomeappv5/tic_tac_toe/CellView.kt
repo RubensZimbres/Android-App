@@ -13,10 +13,6 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.content.ContextCompat
 import kotlin.math.min
 
-/**
- * One board cell. Draws an X or O as thick rounded strokes with a soft glow and a drop shadow,
- * animates the mark being drawn in, and can pulse to highlight a winning line.
- */
 class CellView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -40,16 +36,13 @@ class CellView @JvmOverloads constructor(
     }
     private val markBounds = RectF()
 
-    /** 0..1, how much of the mark has been drawn. */
     private var drawProgress = 1f
-    /** 0..1, strength of the winning-line pulse. */
     private var highlight = 0f
 
     private var drawAnimator: ValueAnimator? = null
     private var pulseAnimator: ValueAnimator? = null
 
     init {
-        // Blur mask filters and shadows on strokes need software rendering on older devices.
         setLayerType(LAYER_TYPE_SOFTWARE, null)
         updateContentDescription()
     }
@@ -127,7 +120,6 @@ class CellView @JvmOverloads constructor(
         glowPaint.color = color
         glowPaint.alpha = (110 + 145 * highlight).toInt()
 
-        // Glow first, then the crisp stroke with its drop shadow on top.
         drawMark(canvas, glowPaint)
         drawMark(canvas, markPaint)
     }
@@ -138,7 +130,6 @@ class CellView @JvmOverloads constructor(
             canvas.drawArc(b, -90f, 360f * drawProgress, false, paint)
             return
         }
-        // X: first stroke during the first half of the animation, second stroke during the rest.
         val first = (drawProgress * 2f).coerceAtMost(1f)
         val second = (drawProgress * 2f - 1f).coerceAtLeast(0f)
         canvas.drawLine(b.left, b.top, b.left + b.width() * first, b.top + b.height() * first, paint)

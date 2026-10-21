@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         playerSoundId = soundPool.load(this, R.raw.move_x, 1)
         computerSoundId = soundPool.load(this, R.raw.move_o, 1)
 
-        // Restore a game in progress, e.g. after the screen was rotated.
         savedInstanceState?.getString(KEY_BOARD)?.let { game = TicTacToeGame(it) }
         cells.forEachIndexed { index, cell -> cell.setMark(game[index], animate = false) }
         updateScoreboard()
@@ -90,7 +89,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             turnText.text = getString(R.string.result_tie)
         }
-        // Give the player a moment to see the final board before switching screens.
         handler.postDelayed({ showResult() }, if (winningLine != null) WIN_DELAY_MS else TIE_DELAY_MS)
     }
 
@@ -122,7 +120,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Drop any pending computer move or screen change so they can't run after we're gone.
         handler.removeCallbacksAndMessages(null)
         soundPool.release()
     }

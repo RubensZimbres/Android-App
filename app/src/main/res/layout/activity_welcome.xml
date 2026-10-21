@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Darken top and bottom so the text and button stand out from the artwork -->
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"

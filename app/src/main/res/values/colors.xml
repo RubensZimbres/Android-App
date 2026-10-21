@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Fire palette, taken from the background artwork -->
     <color name="bg_dark">#FF0E0906</color>
     <color name="fire_amber">#FFFFC14D</color>
     <color name="fire_orange">#FFFF8A1F</color>
@@ -8,12 +7,10 @@
     <color name="fire_orange_dim">#66FF8A1F</color>
     <color name="fire_orange_glow">#CCFF5A00</color>
 
-    <!-- Marks -->
     <color name="mark_x">#FF4FC3F7</color>
     <color name="mark_o">#FFFF6A2B</color>
     <color name="mark_shadow">#E6000000</color>
 
-    <!-- Text and surfaces -->
     <color name="text_primary">#FFFFF4E6</color>
     <color name="text_secondary">#FFCCB8A3</color>
     <color name="card_background">#F2140C08</color>

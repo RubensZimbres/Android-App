@@ -44,7 +44,6 @@ class TicTacToeGameTest {
 
     @Test
     fun computerPrefersWinningOverBlocking() {
-        // O can win at 5; X threatens at 2.
         assertEquals(5, TicTacToeGame("XX OO X  ").chooseComputerMove())
     }
 

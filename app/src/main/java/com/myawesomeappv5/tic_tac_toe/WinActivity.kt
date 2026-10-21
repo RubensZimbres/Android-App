@@ -46,7 +46,6 @@ class WinActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.scoreSummary).text =
             getString(R.string.score_summary, scores.wins, scores.ties, scores.losses)
 
-        // Pop the result card in.
         findViewById<View>(R.id.resultCard).apply {
             scaleX = 0.8f
             scaleY = 0.8f
